@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.exercise.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.exercise.com" xmlns:intf="http://ws.exercise.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.exercise.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xml.apache.org/xml-soap"/>
+   <element name="creationEmployee">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="name" type="xsd:string"/>
+      <element name="surname" type="xsd:string"/>
+      <element name="email" type="xsd:string"/>
+      <element name="telephone" type="xsd:int"/>
+      <element name="department" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="creationEmployeeResponse">
+    <complexType>
+     <sequence>
+      <element name="creationEmployeeReturn" type="impl:Employee"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Agenda">
+    <sequence>
+     <element name="mapProperty" nillable="true" type="apachesoap:Map"/>
+    </sequence>
+   </complexType>
+   <complexType name="Employee">
+    <sequence>
+     <element name="agenda" nillable="true" type="impl:Agenda"/>
+     <element name="department" nillable="true" type="xsd:string"/>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+     <element name="surname" nillable="true" type="xsd:string"/>
+     <element name="telephone" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <element name="updateAgenda">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="stringDate" type="xsd:string"/>
+      <element name="text" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateAgendaResponse">
+    <complexType>
+     <sequence>
+      <element name="updateAgendaReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewEmployees">
+    <complexType/>
+   </element>
+   <element name="viewEmployeesResponse">
+    <complexType>
+     <sequence>
+      <element name="viewEmployeesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setAgenda">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="stringDate" type="xsd:string"/>
+      <element name="text" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setAgendaResponse">
+    <complexType>
+     <sequence>
+      <element name="setAgendaReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchEmployees">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="surname" type="xsd:string"/>
+      <element name="email" type="xsd:string"/>
+      <element name="department" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchEmployeesResponse">
+    <complexType>
+     <sequence>
+      <element name="searchEmployeesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteAgenda">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="stringDate" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteAgendaResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteAgendaReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewAgenda">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewAgendaResponse">
+    <complexType>
+     <sequence>
+      <element name="viewAgendaReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewAgendaByDate">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+      <element name="stringDate" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewAgendaByDateResponse">
+    <complexType>
+     <sequence>
+      <element name="viewAgendaByDateReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://xml.apache.org/xml-soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://ws.exercise.com"/>
+   <complexType name="mapItem">
+    <sequence>
+     <element name="key" nillable="true" type="xsd:anyType"/>
+     <element name="value" nillable="true" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <complexType name="Map">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="apachesoap:mapItem"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="creationEmployeeResponse">
+
+      <wsdl:part element="impl:creationEmployeeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewEmployeesRequest">
+
+      <wsdl:part element="impl:viewEmployees" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewAgendaByDateRequest">
+
+      <wsdl:part element="impl:viewAgendaByDate" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="creationEmployeeRequest">
+
+      <wsdl:part element="impl:creationEmployee" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewAgendaRequest">
+
+      <wsdl:part element="impl:viewAgenda" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setAgendaResponse">
+
+      <wsdl:part element="impl:setAgendaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewAgendaResponse">
+
+      <wsdl:part element="impl:viewAgendaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setAgendaRequest">
+
+      <wsdl:part element="impl:setAgenda" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewAgendaByDateResponse">
+
+      <wsdl:part element="impl:viewAgendaByDateResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchEmployeesRequest">
+
+      <wsdl:part element="impl:searchEmployees" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewEmployeesResponse">
+
+      <wsdl:part element="impl:viewEmployeesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchEmployeesResponse">
+
+      <wsdl:part element="impl:searchEmployeesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteAgendaResponse">
+
+      <wsdl:part element="impl:deleteAgendaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteAgendaRequest">
+
+      <wsdl:part element="impl:deleteAgenda" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateAgendaRequest">
+
+      <wsdl:part element="impl:updateAgenda" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateAgendaResponse">
+
+      <wsdl:part element="impl:updateAgendaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EmployeeCreationService">
+
+      <wsdl:operation name="creationEmployee">
+
+         <wsdl:input message="impl:creationEmployeeRequest" name="creationEmployeeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:creationEmployeeResponse" name="creationEmployeeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateAgenda">
+
+         <wsdl:input message="impl:updateAgendaRequest" name="updateAgendaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateAgendaResponse" name="updateAgendaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewEmployees">
+
+         <wsdl:input message="impl:viewEmployeesRequest" name="viewEmployeesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:viewEmployeesResponse" name="viewEmployeesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setAgenda">
+
+         <wsdl:input message="impl:setAgendaRequest" name="setAgendaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:setAgendaResponse" name="setAgendaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchEmployees">
+
+         <wsdl:input message="impl:searchEmployeesRequest" name="searchEmployeesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:searchEmployeesResponse" name="searchEmployeesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteAgenda">
+
+         <wsdl:input message="impl:deleteAgendaRequest" name="deleteAgendaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteAgendaResponse" name="deleteAgendaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewAgenda">
+
+         <wsdl:input message="impl:viewAgendaRequest" name="viewAgendaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:viewAgendaResponse" name="viewAgendaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewAgendaByDate">
+
+         <wsdl:input message="impl:viewAgendaByDateRequest" name="viewAgendaByDateRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:viewAgendaByDateResponse" name="viewAgendaByDateResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EmployeeCreationServiceSoapBinding" type="impl:EmployeeCreationService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="creationEmployee">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="creationEmployeeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="creationEmployeeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateAgenda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateAgendaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateAgendaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewEmployees">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewEmployeesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewEmployeesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setAgenda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setAgendaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setAgendaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchEmployees">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchEmployeesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchEmployeesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteAgenda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteAgendaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteAgendaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewAgenda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewAgendaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewAgendaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewAgendaByDate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewAgendaByDateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewAgendaByDateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EmployeeCreationServiceService">
+
+      <wsdl:port binding="impl:EmployeeCreationServiceSoapBinding" name="EmployeeCreationService">
+
+         <wsdlsoap:address location="http://localhost:8080/CompanyWebService/services/EmployeeCreationService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
